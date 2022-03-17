@@ -161,8 +161,8 @@ namespace Collections
                 }
                 else
                 {
-                        Node buff = FindMinNode(curNode.right);
-                        Remove(FindMinNode(curNode.right).value);
+                        Node buff = FindMinLeftNode(curNode.right);
+                        Remove(FindMinLeftNode(curNode.right).value);
                         curNode.value = buff.value;
 
                 }
@@ -172,21 +172,67 @@ namespace Collections
             }
         }
 
-        private Node FindMinNode(Node node)
+        private Node FindByValue(int value)
+        {
+            if (root == null)
+            {
+                return null;
+            }
+            Node curNode = root;
+            Node prevNode = null;
+            Node nextNode = null;
+            bool found = false;
+
+            while (curNode != null && !found)
+            {
+                prevNode = nextNode;
+                nextNode = curNode;
+
+                if (value == curNode.value)
+                {
+                    found = true;
+                }
+                else if (value < curNode.value)
+                {
+                    curNode = curNode.left;
+                }
+                else
+                {
+                    curNode = curNode.right;
+                }
+
+            }
+            if (found)
+            {
+                return curNode;
+            }
+            return null;
+        }
+
+        private Node FindMinLeftNode(Node node)
         {
             if(node.left==null)
                 return node;
-            return FindMinNode(node.left);
+            return FindMinLeftNode(node.left);
         }
+        private Node FindMinRightNode(Node node)
+        {
+            if (node.right == null)
+                return node;
+            return FindMinRightNode(node.right);
+        }
+
 
         public void Lower(int value)
         {
+            Console.WriteLine(FindMinRightNode(FindByValue(value).left).value);
+             
             
         }
 
         public void Higher(int value)
         {
-
+            Console.WriteLine(FindMinLeftNode(FindByValue(value).right).value);
         }
         public void headSet(int value)
         {
