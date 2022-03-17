@@ -31,9 +31,9 @@ namespace Collections
             //Console.WriteLine(root.right.right.value);
             binaryTree.Show(binaryTree.root, 1);
 
-            Console.WriteLine("");
+            //Console.WriteLine("");
 
-            binaryTree.Remove(20);
+            binaryTree.Remove(15);
 
             binaryTree.Show(binaryTree.root, 1);
 
