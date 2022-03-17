@@ -161,20 +161,9 @@ namespace Collections
                 }
                 else
                 {
-                    if (prevNode.value < value)
-                    {
                         Node buff = FindMinNode(curNode.right);
                         Remove(FindMinNode(curNode.right).value);
                         curNode.value = buff.value;
-                        curNode.right = nextNode.right;
-                        curNode.left = nextNode.left;
-                        
-                       
-                    }
-                    else
-                    {
-                        prevNode.left = FindMinNode(curNode.right);
-                    }
 
                 }
 
