@@ -28,14 +28,19 @@ namespace Collections
             
             binaryTree.Insert(binaryTree.root, 19);
             binaryTree.Insert(binaryTree.root, 24);
-            //Console.WriteLine(root.right.right.value);
+
             binaryTree.Show(binaryTree.root, 1);
 
-            //Console.WriteLine("");
+            Console.WriteLine("");
 
             binaryTree.Remove(15);
 
             binaryTree.Show(binaryTree.root, 1);
+
+            Console.WriteLine("");
+
+            binaryTree.Lower(19);
+            binaryTree.Higher(19);
 
 
         }
