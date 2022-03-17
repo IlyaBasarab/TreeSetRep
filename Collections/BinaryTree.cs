@@ -96,6 +96,10 @@ namespace Collections
 
         public void Remove(int value)
         {
+            if(root==null)
+            {
+                return ;
+            }
             Node curNode = root;
             Node prevNode = null;
             Node nextNode = null;
@@ -122,23 +126,69 @@ namespace Collections
             }
             if (found)
             {
-                if (prevNode.value < value)
+                if(curNode.left==null&& curNode.right==null)
                 {
-                    prevNode.right = nextNode.right;
-                    Insert(prevNode.left, nextNode.left.value);
-                    nextNode = null;
+                    if (prevNode.value < value)
+                    {
+                        prevNode.right = null;
+                    }
+                    else
+                    {
+                        prevNode.left = null;
+                    }
+                }
+                else if(curNode.left == null)
+                {
+                    if (prevNode.value < value)
+                    {
+                        prevNode.right = curNode.right;
+                    }
+                    else
+                    {
+                        prevNode.left = curNode.right;
+                    }
+                }
+                else if (curNode.right == null)
+                {
+                    if (prevNode.value < value)
+                    {
+                        prevNode.right = curNode.left;
+                    }
+                    else
+                    {
+                        prevNode.left = curNode.left;
+                    }
                 }
                 else
                 {
-                    prevNode.left = nextNode.left;
-                    Insert(prevNode.right, nextNode.right.value);
-                    nextNode = null;
+                    if (prevNode.value < value)
+                    {
+                        Node buff = FindMinNode(curNode.right);
+                        Remove(FindMinNode(curNode.right).value);
+                        curNode.value = buff.value;
+                        curNode.right = nextNode.right;
+                        curNode.left = nextNode.left;
+                        
+                       
+                    }
+                    else
+                    {
+                        prevNode.left = FindMinNode(curNode.right);
+                    }
+
                 }
+
 
 
             }
         }
 
+        private Node FindMinNode(Node node)
+        {
+            if(node.left==null)
+                return node;
+            return FindMinNode(node.left);
+        }
 
         public void Lower(int value)
         {
