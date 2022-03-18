@@ -236,11 +236,14 @@ namespace Collections
         }
         public void headSet(int value)
         {
+            Node buff = FindByValue(value);
+            Show(buff.left,1);
 
         }
         public void tailSet(int value)
         {
-
+            Node buff = FindByValue(value);
+            Show(buff.right, 1);
         }
         public void subSet(int value)
         {

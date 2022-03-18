@@ -40,7 +40,14 @@ namespace Collections
             Console.WriteLine("");
 
             binaryTree.Lower(19);
+            Console.WriteLine("");
             binaryTree.Higher(19);
+            Console.WriteLine("");
+
+            binaryTree.headSet(19);
+            Console.WriteLine("");
+
+            binaryTree.tailSet(19);
 
 
         }
